@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tree_todo_transito" model="ir.ui.view">
+        <field name="name">ventas.disp.view_tree_todo_transito</field>
+        <field name="model">ventas.disp</field>
+        <field name="inherit_id" ref="super_cauchos.view_tree_todo"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field string="Cantidad disponible" name='cant_disponible' />
+                <field string="Medidas" name='medidas' />
+                <field string="Modelo" name='modelo' />
+                <field string="Lonas" name='lonas' />
+                <field string="Marca" name='marca' />
+                <field string="Precio BS.S" name='precio_bolivar_uno' />
+                <field string="Precio USD" name='precio_dolar_uno' />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_transito" model="ir.ui.view">
+        <field name="name">view.form.transito</field>
+        <field name="model">ventas.disp</field>
+        <field name="arch" type='xml'>
+            <form string="Producto">
+                <sheet>
+                    <field name="imagen" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}" />
+                    <group string="Titulo del producto">
+                        <h1>
+                            <field name='titulo_producto' string='Titulo del producto' />
+                        </h1>
+                    </group>
+                    <label for='estado'>Estado del producto</label>
+                    <field name="estado" />
+                    <group>
+                        <group string="Descripción">
+                            <field name='modelo' string='Modelo del producto' />
+                            <field name='marca' string='Marca del producto' />
+                            <field name='lonas' string='Lonas' />
+                            <field name='cant_disponible' string='Cantidad' />
+                        </group>
+                        <group string="Precios">
+                            <field name='precio_dolar_uno' string='Precio en USD' />
+                            <field name='precio_bolivar_uno' string='Precio en BS.S' />
+                        </group>
+                    </group>
+                    <group string="Precios alternativos">
+                        <field name='precio_bolivar_dos' string='Precio en bolivares 2' />
+                        <field name='precio_dolar_dos' string='Precio en dolares 2' />
+                        <field name='precio_dolar_tres' string='Precio en dolares 3' />
+                        <field name='precio_bolivar_tres' string='Precio en bolivares 3' />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id='action_view_transito' model='ir.actions.act_window'>
+        <field name='name'>Listado de precios (transito)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name='res_model'>ventas.disp</field>
+        <field name='view_mode'>tree,form,kanban</field>
+    </record>
+
+    <menuitem id="menu_transito" parent="sale.menu_sale_report" action="super_cauchos.action_view_transito" sequence="3" />
+
+</odoo>
