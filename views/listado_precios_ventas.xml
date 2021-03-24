@@ -96,5 +96,6 @@
         <field name='view_mode'>tree,form,kanban</field>
     </record>
 
-    <menuitem id="menu_todo" parent="sale.menu_sale_report" action="super_cauchos.action_view_todo" sequence="2" />
+    <menuitem id="menu_todo" parent="sale.menu_sale_report" action="super_cauchos.action_view_todo" sequence="2" groups="sales_team.group_sale_manager"/>
+    
 </odoo>
