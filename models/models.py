@@ -24,9 +24,3 @@ class SuperCauchosVentas(models.Model):
     imagen = fields.Binary()
 
     titulo_producto = fields.Char('Titulo del reporte')
-
-    def _disponiblesProductos(self):
-        busqueda = self.env['ventas.disp'].search([
-            ('estado', '!=', 'transito')
-        ])
-        self.datos = busqueda

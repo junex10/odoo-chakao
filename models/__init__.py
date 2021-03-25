@@ -1,1 +1,1 @@
-from . import models, transito
+from . import models

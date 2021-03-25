@@ -13,7 +13,20 @@
                 <field string="Marca" name='marca' />
                 <field string="Precio BS.S" name='precio_bolivar_uno' />
                 <field string="Precio USD" name='precio_dolar_uno' />
+                <field string="Estado" name='estado' />
             </tree>
+        </field>
+    </record>
+
+    <record id="view_tree_todo_search" model="ir.ui.view">
+        <field name="name">view.tree.todo.search</field>
+        <field name="model">ventas.disp</field>
+        <field name="arch" type="xml">
+            <search string="Filtro de listado de precios disponibles">
+                <!-- Add your fields here -->
+                <filter string="Sin transito" name="no_transito" domain="[('estado', '!=', 'transito')]"/>
+                <field name="estado"/>
+            </search>
         </field>
     </record>
 
@@ -94,8 +107,9 @@
         <field name="type">ir.actions.act_window</field>
         <field name='res_model'>ventas.disp</field>
         <field name='view_mode'>tree,form,kanban</field>
+        <field name="context">{"search_default_no_transito":1}</field>
     </record>
 
-    <menuitem id="menu_todo" parent="sale.menu_sale_report" action="super_cauchos.action_view_todo" sequence="2" groups="sales_team.group_sale_manager"/>
-    
+    <menuitem id="menu_todo" parent="sale.menu_sale_report" action="super_cauchos.action_view_todo" sequence="2" groups="sales_team.group_sale_manager" />
+
 </odoo>
