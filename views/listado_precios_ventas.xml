@@ -103,7 +103,7 @@
     </record>
 
     <record id='action_view_todo' model='ir.actions.act_window'>
-        <field name='name'>Listado de precios (disponible)</field>
+        <field name='name'>Listado de precios</field>
         <field name="type">ir.actions.act_window</field>
         <field name='res_model'>ventas.disp</field>
         <field name='view_mode'>tree,form,kanban</field>
