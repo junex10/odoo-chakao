@@ -23,4 +23,4 @@ class SuperCauchosVentas(models.Model):
 
     imagen = fields.Binary()
 
-    titulo_producto = fields.Char('Titulo del reporte')
+    name = fields.Char('Titulo del reporte')
