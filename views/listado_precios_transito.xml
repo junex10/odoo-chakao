@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_tree_transito" model="ir.ui.view">
+    <record id='action_view_transito' model='ir.actions.act_window'>
+        <field name='name'>Listado de precios (transito)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name='res_model'>ventas.disp</field>
+        <field name='view_mode'>tree,form,kanban</field>
+    </record>
+
+    <menuitem id="menu_transito" parent="sale.menu_sale_report" action="super_cauchos.action_view_transito" sequence="2" groups="sales_team.group_sale_manager" />
+
+    <record id="ventas_disp_view_tree_todo_transito" model="ir.ui.view">
+        <field name="name">ventas.disp.view.tree.todo.transito</field>
+        <field name="model">ventas.disp</field>
+        <field name="inherit_id" ref="super_cauchos.view_tree_todo"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field string="Precio BS.S" name='precio_bolivar_uno' />
+            </tree>
+        </field>
+    </record>
+
+    <!--<record id="view_tree_transito" model="ir.ui.view">
         <field name="name">view.tree.transito</field>
         <field name="model">ventas.transito</field>
         <field name='arch' type='xml'>
@@ -50,16 +70,6 @@
                 </templates>
             </kanban>
         </field>
-    </record>
-
-    <record id='action_view_transito' model='ir.actions.act_window'>
-        <field name='name'>Listado de precios (transito)</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name='res_model'>ventas.transito</field>
-        <field name='view_mode'>tree,form,kanban</field>
-    </record>
-
-    <menuitem id="menu_transito" parent="sale.menu_sale_report" action="super_cauchos.action_view_transito" sequence="2" groups="sales_team.group_sale_manager" />
-    
+    </record>-->
 
 </odoo>
