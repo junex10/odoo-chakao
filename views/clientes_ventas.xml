@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="0">
+        <record id="view_partner_form_clientes" model="ir.ui.view">
+            <field name="name">res.partner.form.clientes</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page name="otros_datos_clientes" string="Otros datos clientes">
+                        <group name='datos'>
+                            <group name='datos_distribucion'>
+                                <field name='tipo_cliente' />
+                                <field name='distribuidor' />
+                                <field name='flota' />
+                                <field name='consumidor_final' />
+                                <field name='otros_entes' />
+                            </group>
+                            <group name='datos_vendedor'>
+                                <field name='vendedor_asignado' string='Vendedor asignado' />
+                                <field name='zona'/>
+                                <field name='condicion_pago'/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

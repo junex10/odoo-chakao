@@ -24,3 +24,23 @@ class SuperCauchosVentas(models.Model):
     imagen = fields.Binary()
 
     name = fields.Char('Titulo del reporte')
+
+class Presupuestos(models.Model):
+    _inherit = "sale.order"
+
+    nombre_vendedor = fields.Char('Vendedor')
+    rif = fields.Char("Rif")
+    direccion_factura = fields.Char("Dirección de factura")
+    direccion_entrega = fields.Char("Dirección de entrega")
+    tarifa = fields.Float("Tarifa")
+    moneda_referencia = fields.Selection(selection=[('ptr', 'PTR')])
+    asignacion = fields.Selection(selection=[('gerente_ventas', 'Gerente de Ventas'), ('gerencia_credito', 'Gerencia de Crédito y Cobranzas')])
+    por_aprobar = fields.Selection(selection=[('gerente_ventas', 'Gerente de Ventas'), ('gerencia_credito', 'Gerencia de Crédito y Cobranzas')])
+
+    lapso_reserva_ini = fields.Date(string="Lapso de reserva inicial")
+    lapso_reserva_end = fields.Date(string="Lapso de reserva final")
+
+    fecha_estimada = fields.Date(string="Fecha estimada de entrega")
+    observaciones = fields.Text()
+    aprobacion = fields.Boolean(string="Aprobado", default=False)
+    no_aprobado = fields.Boolean(string="Rechazado", default=False)
