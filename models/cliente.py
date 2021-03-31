@@ -9,6 +9,12 @@ class Clientes(models.Model):
 
     consumidor_final = fields.Boolean(string='Consumidor final', default=False)
     otros_entes = fields.Boolean(string='Otros entes', default=False)
-    vendedor_asignado = fields.Many2one('sale.order', 'Vendedor')
+    vendedor_asignado = fields.Many2one('vendedores.reg', 'Vendedor')
     zona = fields.Text('Zona')
     condicion_pago = fields.Text('Condición de pago')
+
+class ContactoCliente(models.Model):
+    _inherit = 'res.partner'
+
+    horario_entrega = fields.Char("Horario de entrega")
+    direccion_entrega_mapa = fields.Binary("Mapa de dirección")

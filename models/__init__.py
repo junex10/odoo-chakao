@@ -1,1 +1,1 @@
-from . import models, cliente
+from . import models, cliente, vendedor

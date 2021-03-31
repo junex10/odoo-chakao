@@ -28,7 +28,7 @@ class SuperCauchosVentas(models.Model):
 class Presupuestos(models.Model):
     _inherit = "sale.order"
 
-    nombre_vendedor = fields.Char('Vendedor')
+    nombre_vendedor = fields.Many2one('vendedores.reg', 'Vendedor')
     rif = fields.Char("Rif")
     direccion_factura = fields.Char("Dirección de factura")
     direccion_entrega = fields.Char("Dirección de entrega")

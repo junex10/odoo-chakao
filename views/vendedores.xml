@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='action_view_vendedores' model='ir.actions.act_window'>
+        <field name='name'>Vendedores</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name='res_model'>vendedores.reg</field>
+        <field name='view_mode'>tree,form,kanban</field>
+        <field name="context">{"search_default_disponibles":1}</field>
+    </record>
+
+    <menuitem id="menu_vendedores" parent="sale.sale_order_menu" action="super_cauchos.action_view_vendedores" />
+
+    <record id="view_tree_vendedores_search" model="ir.ui.view">
+        <field name="name">view.tree.vendedores.search</field>
+        <field name="model">vendedores.reg</field>
+        <field name="arch" type="xml">
+            <search string="Filtro de vendedores disponibles">
+                <filter string="Disponibles" name="disponibles" domain="[('status', '=', 'disponible')]"/>
+                <filter string="No disponibles" name="no_disponibles" domain="[('status', '=', 'no_disponible')]"/>
+                <field name="status"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vista de tabla -->
+    <record id="view_tree_vendedores" model="ir.ui.view">
+        <field name="name">view.tree.vendedores</field>
+        <field name="model">vendedores.reg</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='name' />
+                <field name='direccion_vendedor' />
+                <field name='cedula_vendedor' />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_kanba_vendedores" model="ir.ui.view">
+        <field name="name">view.kanba.vendedores</field>
+        <field name="model">vendedores.reg</field>
+        <field name='arch' type='xml'>
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('vendedores.reg', 'image_128', imagen)" alt="Vendedor" class="o_image_64_contain" />
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name" />
+                                </strong>
+                                <div name="tags" />
+                                <ul>
+                                    <li>
+                                        Dirección del vendedor:
+                                        <field name="direccion_vendedor" />
+                                    </li>
+                                    <li>
+                                        Cédula del vendedor:
+                                        <field name="direccion_vendedor" />
+                                    </li>
+                                </ul>
+                                <div name="tags" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Formulario -->
+
+    <record id="view_form_vendedores" model="ir.ui.view">
+        <field name="name">view.form.vendedores</field>
+        <field name="model">vendedores.reg</field>
+        <field name="arch" type='xml'>
+            <form string="Producto">
+                <sheet>
+                    <field name="imagen" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}" />
+                    <group string="Nombre del vendedor">
+                        <h1>
+                            <field name='name'/>
+                        </h1>
+                    </group>
+                    <group string="Estado del vendedor">
+                        <field name="status" string="Estado del vendedor" />
+                    </group>
+                    <notebook>
+                        <page name="datos_vendedor" string="Datos del vendedor">
+                            <group string="Datos del vendedor">
+                                <field name='direccion_vendedor' />
+                                <field name='cedula_vendedor' />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
